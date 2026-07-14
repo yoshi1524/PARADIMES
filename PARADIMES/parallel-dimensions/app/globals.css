@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Anton", sans-serif;
+  --font-body: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0A0A0B;
+  color: #F3F2EE;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible keyboard focus, everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #C6C9CE;
+  outline-offset: 3px;
+}
+
+/* --- Signature element: "Rift" text -----------------------------------
+   Parallel Dimensions' headlines split into two overlapping layers, as if
+   the same word slipped half a beat out of sync with its counterpart in
+   an adjacent dimension. Used sparingly: hero headline + page titles only. */
+.rift {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+.rift::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0.06em;
+  top: -0.05em;
+  z-index: -1;
+  color: transparent;
+  -webkit-text-stroke: 1px #C6C9CE;
+  opacity: 0.55;
+}
+
+.hairline {
+  border-color: #2A2B2F;
+}
+
+.grain-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+}
